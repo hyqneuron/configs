@@ -274,12 +274,6 @@
         <menu>client-menu</menu>
       </action>
     </keybind>
-    <!-- Take a screenshot of the current window with gnome-screenshot when Alt+Print are pressed -->
-    <keybind key="A-Print">
-      <action name="Execute">
-        <command>gnome-screenshot -w</command>
-      </action>
-    </keybind>
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
@@ -331,15 +325,15 @@
         <direction>down</direction>
       </action>
     </keybind>
-    <!-- gnome-panel -->
+    <!-- panel -->
     <keybind key="W-1">
       <action name="Execute">
-        <command>gnome-panel</command>
+        <command>bash -c '$PANEL'</command>
       </action>
     </keybind>
     <keybind key="W-2">
       <action name="Execute">
-        <command>killall gnome-panel</command>
+        <command>bash -c 'killall $PANEL'</command>
       </action>
     </keybind>
     <!-- gRun -->
@@ -353,9 +347,9 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Nautilus</name>
+          <name>FileMgr</name>
         </startupnotify>
-        <command>nautilus --no-desktop</command>
+        <command>bash -c '$FILEMGR'</command>
       </action>
     </keybind>
     <!-- Show Windows -->
@@ -412,10 +406,10 @@
         <y>center</y>
       </action>
     </keybind>
-    <!-- Launch gnome-screenshot when Print is pressed -->
+    <!-- Launch screenshot when Print is pressed -->
     <keybind key="Print">
       <action name="Execute">
-        <command>gnome-screenshot</command>
+        <command>bash -c '$SCREENSHOT'</command>
       </action>
     </keybind>
   </keyboard>
