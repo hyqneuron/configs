@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://openbox.org/
+                file:///usr/share/openbox/menu.xsd">
+
+<menu id="root-menu" label="Openbox 3" execute="/home/noid/.config/openbox/pipemenu.py">
+</menu>
+<!--
+<menu id="root-menu" label="Openbox 3">
+  <item label="Terminal">
+    <action name="Execute"><execute>x-terminal-emulator</execute></action>
+  </item>
+  <item label="Gvim">
+    <action name="Execute"><execute>gvim</execute></action>
+  </item>
+  <item label="Chrome">
+    <action name="Execute"><execute>x-www-browser</execute></action>
+  </item>
+  <menu id="/Debian" />
+  <separator />
+  <menu id="client-list-menu" />
+  <separator />
+  <item label="ObConf">
+    <action name="Execute"><execute>obconf</execute></action>
+  </item>
+  <item label="Reconfigure">
+    <action name="Reconfigure" />
+  </item>
+  <item label="Restart">
+    <action name="Restart" />
+  </item>
+  <separator />
+  <item label="Time" />
+  <item label="Exit">
+    <action name="Exit" />
+  </item>
+</menu>
+-->
+<menu id="volume-inc-menu" label="Volume Up" execute="/home/noid/.config/openbox/pipemenu.py volume_inc">
+</menu>
+<menu id="volume-dec-menu" label="Volume Up" execute="/home/noid/.config/openbox/pipemenu.py volume_dec">
+</menu>
+<menu id="volume-tog-menu" label="Volume Up" execute="/home/noid/.config/openbox/pipemenu.py volume_tog">
+</menu>
+
+</openbox_menu>
