@@ -157,6 +157,7 @@ au BufRead,BufNewFile *.yaml set ft=none
 "cancel highlight
 nnoremap <F6> :nohl<CR>
 
+syntax on
 set et sw=4 sts=4
 set tw=80
 set nu linebreak wrap!
