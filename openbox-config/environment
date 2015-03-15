@@ -1,3 +1,0 @@
-export PANEL=xfce4-panel
-export FILEMGR=thunar
-export SCREENSHOT='xfce4-screenshooter -f'
