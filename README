@@ -3,3 +3,4 @@ convenient to store this using FTP...
 
 .vimrc:             ~/.vimrc
 openbox-config:     ~/.config/openbox
+backgrounds:        ~/.config/backgrounds
