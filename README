@@ -2,5 +2,7 @@ This repo contains hyqneuron's configuration files... it would be way more
 convenient to store this using FTP... 
 
 .vimrc:             ~/.vimrc
-openbox-config:     ~/.config/openbox
+openbox:            ~/.config/openbox
 backgrounds:        ~/.config/backgrounds
+i3:                 ~/.config/i3
+i3status:           ~/.config/i3status
