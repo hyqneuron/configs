@@ -1,6 +1,7 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# use 'xmodmap -pke' to find out X's keymaps
 
 set $mod Mod1
 set $up k
@@ -19,13 +20,23 @@ font pango:DejaVu Sans Mono 4
 
 
 # for testing
-bindsym $mod+Control+t exec notify-send 'pretty interesting huh?'
+# bindsym Mod4+Shift+Up exec i3-nagbar
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# volume control
+bindsym Mod4+Shift+Up   exec amixer sset Master 7+
+bindsym Mod4+Shift+Down exec amixer sset Master 7-
+bindsym XF86AudioMute   exec amixer sset Master toggle
+bindsym XF86AudioRaiseVolume exec amixer sset Master 7+
+bindsym XF86AudioLowerVolume exec amixer sset Master 7-
+
+# Windows-key app launching
+bindsym Mod4+Return exec xfce4-terminal --hide-menubar
+bindsym Mod4+g      exec gvim
+bindsym Mod4+c      exec x-www-browser
+bindsym Mod4+r      exec grun
 
 # kill focused window
-bindsym $mod+Shift+c kill
+bindsym Mod4+k kill
 
 # reload the configuration file
 # somehow the control key does not work
@@ -35,14 +46,13 @@ bindsym $mod+Control+r reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+Control+q exit
 
-# start dmenu (a program launcher)
+# dmenu
 # bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# i3-dmenu-desktop only displays applications with .desktop entry
+bindsym $mod+q exec --no-startup-id i3-dmenu-desktop
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -92,6 +102,7 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -158,6 +169,20 @@ bindsym $mod+Shift+o resize grow width 10 px or 10 ppt
 bar {
         modifier $mod
         status_command i3status
-        font pango:DejaVu Sans Mono 7
-        mode dock # change to 'hide' to autohide
+        font pango:DejaVu Sans Mono 8
+        mode hide # change to 'hide' to autohide
 }
+
+
+# colors
+# class                 border  backgr. text    indicator
+client.focused          #4c7899 #ffff00 #000000 #2e9ef4
+client.focused_inactive #333333 #5f676a #ffffff #484e50
+client.unfocused        #333333 #000000 #ffffff #292d2e
+client.urgent           #2f343a #900000 #ffffff #900000
+#client.placeholder      #000000 #0c0c0c #ffffff #000000
+
+
+# setting marks and going there
+bindsym $mod+period exec i3-input -F 'mark %s' -P 'Mark name: '
+bindsym $mod+comma  exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
