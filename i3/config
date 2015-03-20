@@ -131,37 +131,16 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym $left  resize shrink width 10 px or 10 ppt
-        bindsym $down  resize shrink height 10 px or 10 ppt
-        bindsym $up    resize grow height 10 px or 10 ppt
-        bindsym $right resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left  resize shrink width 10 px or 10 ppt
-        bindsym Down  resize shrink height 10 px or 10 ppt
-        bindsym Up    resize grow height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
-# resizing window in normal mode
-bindsym $mod+Shift+y resize shrink width 10 px or 10 ppt
-bindsym $mod+Shift+u resize shrink height 10 px or 10 ppt
-bindsym $mod+Shift+i resize grow height 10 px or 10 ppt
-bindsym $mod+Shift+o resize grow width 10 px or 10 ppt
+# growing window in normal mode
+bindsym $mod+y resize grow left
+bindsym $mod+u resize grow down
+bindsym $mod+i resize grow up
+bindsym $mod+o resize grow right
+# shrinking window in normal mode
+bindsym $mod+Shift+y resize shrink left
+bindsym $mod+Shift+u resize shrink down
+bindsym $mod+Shift+i resize shrink up
+bindsym $mod+Shift+o resize shrink right
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -174,15 +153,17 @@ bar {
 }
 
 
-# colors
-# class                 border  backgr. text    indicator
-client.focused          #4c7899 #ffff00 #000000 #2e9ef4
-client.focused_inactive #333333 #5f676a #ffffff #484e50
-client.unfocused        #333333 #000000 #ffffff #292d2e
-client.urgent           #2f343a #900000 #ffffff #900000
-#client.placeholder      #000000 #0c0c0c #ffffff #000000
 
 
 # setting marks and going there
 bindsym $mod+period exec i3-input -F 'mark %s' -P 'Mark name: '
 bindsym $mod+comma  exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+
+
+# colors
+# class                 border  backgr. text    indicator
+client.focused          #4c7899 #ffff00 #ff0000 #2e9ef4
+client.focused_inactive #333333 #00cc00 #00cc00 #484e50
+client.unfocused        #333333 #009900 #009900 #292d2e
+client.urgent           #2f343a #900000 #ffffff #900000
+#client.placeholder      #000000 #0c0c0c #ffffff #000000
