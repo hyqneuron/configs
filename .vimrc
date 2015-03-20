@@ -71,21 +71,21 @@ function! ToggleQuickMove()
 	if s:imove
 		map j gj
 		map k gk
-		iunmap j
-		iunmap k
-		iunmap h
-		iunmap l
+		"iunmap j
+		"iunmap k
+		"iunmap h
+		"iunmap l
 		unmap th
 		unmap tl
 		let s:imove = 0
 		echo "QuickMove Off"
 	else
-		map j <C-e><Down>
-		map k <C-y><Up>
-		imap j <C-o>j
-		imap k <C-o>k
-		imap h <C-o>h
-		imap l <C-o>l
+		map j 2<C-e>2<Down>
+		map k 2<C-y>2<Up>
+		"imap j <C-o>j
+		"imap k <C-o>k
+		"imap h <C-o>h
+		"imap l <C-o>l
 		map th :tabp<CR>
 		map tl :tabn<CR>
 		let s:imove = 1
@@ -131,7 +131,7 @@ let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 "BufExplorer
 map <F4> :ToggleBufExplorer<CR>
-let g:bufExplorerSortBy='name'
+let g:bufExplorerSortBy='fullpath'
 let g:bufExplorerShowRelativePath=1
 "VIMRC
 command! ReloadVIMRC source $MYVIMRC
