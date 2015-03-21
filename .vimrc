@@ -139,6 +139,10 @@ command! EditVIMRC tabe ~/.vimrc
 "Session
 command! Ss mksession! ~/.vimsession
 command! Sl source ~/.vimsession
+command! Ss1 mksession! ~/.vimsession1
+command! Sl1 source ~/.vimsession1
+command! Ss2 mksession! ~/.vimsession2
+command! Sl2 source ~/.vimsession2
 
 "==============================
 "Quirky little things

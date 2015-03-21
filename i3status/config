@@ -1,5 +1,5 @@
 # i3status configuration file.
-# see "man i3status" for documentation.
+# see "man i3status"  for documentation.
 
 # It is important that this file is edited as UTF-8.
 # The following line should contain a sharp s:
@@ -8,63 +8,54 @@
 
 general {
         colors = true
-        interval = 5
+        interval = 1
         color_separator = "#FFFFFF"
+        color_bad = '#ff0000'
 }
 
-# order += "ipv6"
-# order += "disk /"
 order += "run_watch DHCP"
-# order += "run_watch VPN"
 order += "ethernet eth0"
 order += "wireless wlan1"
 order += "battery 1"
-# order += "load"
 order += "cpu_usage"
 order += "volume master"
 order += "tztime local"
 
-wireless wlan1 {
-        format_up = "%essid: %quality [%ip]"
-        format_down = "No wifi"
+run_watch DHCP {
+        pidfile = "/var/run/dhclient*.pid"
+        format = "  %title: %status  "
 }
 
 ethernet eth0 {
         # if you use %speed, i3status requires root privileges
-        format_up = "Eth: %ip"
-        format_down = "No eth"
+        format_up = "  Eth: %ip  "
+        format_down = "  No eth  "
+}
+wireless wlan1 {
+        format_up = "  %essid: %quality [%ip]  "
+        format_down = "  No wifi  "
 }
 
 battery 1 {
-        format = "%status %percentage %remaining"
+        format = "  %status %percentage %remaining  "
         format_down = "No bat"
         color_good = "#00FF00"
         color_bad = "#00FF00"
         color_good = "#00FF00"
 }
 
-run_watch DHCP {
-        pidfile = "/var/run/dhclient*.pid"
+cpu_usage {
+        format = "  C %usage  "
 }
 
-run_watch VPN {
-        pidfile = "/var/run/vpnc/pid"
-}
 
-tztime local {
-        format = "%b-%d %H:%M"
-}
-
-load {
-        format = "%1min"
-}
-
-disk "/" {
-        format = "%avail"
-}
 volume master {
-        format = "♪: %volume"
+        format = "  V %volume  "
         device = "default"
         mixer = "Master"
         mixer_idx = 0
+}
+
+tztime local {
+        format = "  %b-%d %H:%M  "
 }

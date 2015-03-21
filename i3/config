@@ -35,6 +35,10 @@ bindsym Mod4+g      exec gvim
 bindsym Mod4+c      exec x-www-browser
 bindsym Mod4+r      exec grun
 
+# hide or show bar
+bindsym Mod4+1      bar mode dock
+bindsym Mod4+2      bar mode hide
+
 # kill focused window
 bindsym Mod4+k kill
 
@@ -148,8 +152,13 @@ bindsym $mod+Shift+o resize shrink right
 bar {
         modifier $mod
         status_command i3status
-        font pango:DejaVu Sans Mono 8
-        mode hide # change to 'hide' to autohide
+        font pango:DejaVu Sans Mono 8 
+        mode hide 
+        colors {
+                background #222222
+                separator #ff0000
+                statusline #ffffff
+        }
 }
 
 
@@ -161,9 +170,13 @@ bindsym $mod+comma  exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
 
 
 # colors
+set $color1 #ffff00 
+set $color2 #cc0000 
+set $color3 #cc0000 
 # class                 border  backgr. text    indicator
-client.focused          #4c7899 #ffff00 #ff0000 #2e9ef4
-client.focused_inactive #333333 #00cc00 #00cc00 #484e50
-client.unfocused        #333333 #009900 #009900 #292d2e
-client.urgent           #2f343a #900000 #ffffff #900000
+client.focused          #000000 $color1 $color1 #ff00ff
+client.focused_inactive #000000 $color2 $color2 #ff00ff
+client.unfocused        #000000 $color3 $color3 #ff00ff
+client.urgent           #2f343a #900000 #ffffff #ff00ff
 #client.placeholder      #000000 #0c0c0c #ffffff #000000
+
