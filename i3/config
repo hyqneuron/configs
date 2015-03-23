@@ -13,6 +13,49 @@ set $right l
 # is used in the bar {} block below.
 font pango:DejaVu Sans Mono 4
 
+#=================
+# Catalog
+#=================
+# A-tab:            goto last workspace
+# A-minus:          put into scratchpad
+# A-plus:           show scratchpad
+#
+# W-shift-up:       inc volume
+# W-shift-down:     dec volume
+# W-return :        terminal
+# W-c:              chrome
+# W-g:              gvim
+# W-r:              grun
+# W-1:              show bar
+# W-2:              hide bar
+# W-k:              kill
+#
+# A-S-r:            restart i3
+# A-C-r:            reload i3
+# A-S-q:            quit with nagbar
+# A-S-C-q:          quit
+# 
+# A-direction:      change focus
+# A-S-direction:    move window
+# A-n:              hsplit
+# A-m:              vsplit
+# A-f:              fullscreen
+# A-s:              stack
+# A-w:              tab
+# A-e:              v/h toggle
+# A-S-space:        toggle floating
+# A-space:          focus floating
+# A-a:              focus parent
+# A-S-a:            focus child
+# A-number:         goto workspace
+# A-S-number:       move to workspace
+#
+# A-yuio:           grow in that direction
+# A-S-yuio:         shrink in that direction
+#
+# A-period:         set mark
+# A-comma:          goto mark
+# A-q:              dmenu
 
 #=========================================================================
 # Simple key maps
@@ -21,6 +64,12 @@ font pango:DejaVu Sans Mono 4
 
 # for testing
 # bindsym Mod4+Shift+Up exec i3-nagbar
+
+# workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
+
+bindsym $mod+minus move scratchpad
+bindsym $mod+plus scratchpad show
 
 # volume control
 bindsym Mod4+Shift+Up   exec amixer sset Master 7+
@@ -180,3 +229,7 @@ client.unfocused        #000000 $color3 $color3 #ff00ff
 client.urgent           #2f343a #900000 #ffffff #ff00ff
 #client.placeholder      #000000 #0c0c0c #ffffff #000000
 
+#======================
+# Run commands
+#======================
+exec --no-startup-id feh --bg-fill ~/.config/backgrounds/Thingvellir_by_pattersa.jpg

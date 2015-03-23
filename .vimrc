@@ -160,6 +160,8 @@ noremap [q q
 au BufRead,BufNewFile *.yaml set ft=none
 "cancel highlight
 nnoremap <F6> :nohl<CR>
+nnoremap <F7> :tags<CR>
+nnoremap <F8> :b#<CR>
 
 syntax on
 set et sw=4 sts=4
