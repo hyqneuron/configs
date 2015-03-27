@@ -41,8 +41,8 @@ font pango:DejaVu Sans Mono 4
 # A-m:              vsplit
 # A-f:              fullscreen
 # A-s:              stack
-# A-w:              tab
-# A-e:              v/h toggle
+#!A-w:              tab
+#!A-e:              v/h toggle
 # A-S-space:        toggle floating
 # A-space:          focus floating
 # A-a:              focus parent
@@ -50,12 +50,12 @@ font pango:DejaVu Sans Mono 4
 # A-number:         goto workspace
 # A-S-number:       move to workspace
 #
-# A-yuio:           grow in that direction
+#!A-yuio:           grow in that direction
 # A-S-yuio:         shrink in that direction
 #
 # A-period:         set mark
 # A-comma:          goto mark
-# A-q:              dmenu
+#!A-q:              dmenu
 
 #=========================================================================
 # Simple key maps
@@ -217,6 +217,9 @@ bar {
 bindsym $mod+period exec i3-input -F 'mark %s' -P 'Mark name: '
 bindsym $mod+comma  exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
 
+# move to output
+bindsym $mod+Shift+m exec i3-input -F 'move workspace to output %s' -P 'move workspace to output: '
+
 
 # colors
 set $color1 #ffff00 
@@ -232,4 +235,4 @@ client.urgent           #2f343a #900000 #ffffff #ff00ff
 #======================
 # Run commands
 #======================
-exec --no-startup-id feh --bg-fill ~/.config/backgrounds/Thingvellir_by_pattersa.jpg
+exec --no-startup-id feh --bg-fill ~/.config/backgrounds/Forever_crop1.jpg
