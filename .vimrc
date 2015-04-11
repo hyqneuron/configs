@@ -19,6 +19,7 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'jlanzarotta/bufexplorer'
+Plugin 'kana/vim-arpeggio'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -108,22 +109,45 @@ function! UnSetGMove()
 	unmap <Up> 
 	unmap <Down> 
 endfunction
+"============
+"Display Line Movement
+"============
+function! SetTabJumps()
+    nnoremap gt0 :tabfirst<CR>
+    nnoremap gt1 :2tabnext<CR>
+    nnoremap gt2 :3tabnext<CR>
+    nnoremap gt3 :4tabnext<CR>
+    nnoremap gt4 :5tabnext<CR>
+    nnoremap gt5 :6tabnext<CR>
+    nnoremap gt6 :7tabnext<CR>
+    nnoremap gt7 :8tabnext<CR>
+    nnoremap gt8 :9tabnext<CR>
+    nnoremap gt9 :10tabnext<CR>
+endfunction
+function! UnSetTabJumps()
+    unmap gt0 
+    unmap gt1
+    unmap gt2
+    unmap gt3
+    unmap gt4
+    unmap gt5
+    unmap gt6
+    unmap gt7
+    unmap gt8
+    unmap gt9
+endfunction
 
 
 
 "=========================
 "=========================
-"BASIC SETTINGS
+"Plugins and sessions
 "=========================
 "=========================
 "NERDTree
 map <F5> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\~$', '\.pkl$']
 filetype plugin on
-"TagList
-"map <F4> :TlistToggle<CR>
-"command! T1 let Tlist_Show_One_File=1
-"command! Ta let Tlist_Show_One_File=0
 "TagBar
 map <F3> :TagbarToggle<CR>
 let g:tagbar_left=1
@@ -133,6 +157,8 @@ let g:tagbar_compact = 1
 map <F4> :ToggleBufExplorer<CR>
 let g:bufExplorerSortBy='fullpath'
 let g:bufExplorerShowRelativePath=1
+"Arpeggio chording
+"Arpeggio inoremap jk <Esc>
 "VIMRC
 command! ReloadVIMRC source $MYVIMRC
 command! EditVIMRC tabe ~/.vimrc
@@ -143,25 +169,43 @@ command! Ss1 mksession! ~/.vimsession1
 command! Sl1 source ~/.vimsession1
 command! Ss2 mksession! ~/.vimsession2
 command! Sl2 source ~/.vimsession2
+command! Ss3 mksession! ~/.vimsession3
+command! Sl3 source ~/.vimsession3
 
+"==============================
 "==============================
 "Quirky little things
 "==============================
-"quick-fix window
-map <C-Down> :cn<CR>
-map <C-Up> :cp<CR>
-"wrap-line movement
-call SetGMove()
-"quick 3-word jumps
-noremap q 3w
-noremap Q 3b
+"==============================
+" quick-fix window
+noremap <C-Down> :cn<CR>
+noremap <C-Up> :cp<CR>
+" quick 3-word jumps
+nnoremap q 3w
+nnoremap Q 3b
 noremap [q q
-"pylearn2-yaml is has a horrible highlighting engine
-au BufRead,BufNewFile *.yaml set ft=none
+" start editing at end of file
+nnoremap gz Gzzo
 "cancel highlight
 nnoremap <F6> :nohl<CR>
+" show tag stack
 nnoremap <F7> :tags<CR>
+" switch buffer
 nnoremap <F8> :b#<CR>
+" tab-left and tab-right
+nnoremap H <C-PageUp>
+nnoremap L <C-PageDown>
+nnoremap gh H
+nnoremap gl L
+" wrap-line movement
+call SetGMove()
+nnoremap gT :tablast<CR>
+
+
+
+" sdfasdf horrible adsf  ak"k
+" pylearn2-yaml is has a horrible highlighting engine
+au BufRead,BufNewFile *.yaml set ft=none
 
 syntax on
 set et sw=4 sts=4
@@ -169,7 +213,7 @@ set tw=80
 set nu linebreak wrap!
 set smartindent
 set hlsearch
-set clipboard=unnamed
+set clipboard="0"  "make pasting easier"
 set go-=T
 set go-=m
 set go-=e
