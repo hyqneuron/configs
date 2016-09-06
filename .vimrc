@@ -72,23 +72,15 @@ function! ToggleQuickMove()
 	if s:imove
 		map j gj
 		map k gk
-		"iunmap j
-		"iunmap k
-		"iunmap h
-		"iunmap l
-		unmap th
-		unmap tl
+        unmap d
+        unmap u
 		let s:imove = 0
 		echo "QuickMove Off"
 	else
 		map j 2<C-e>2<Down>
 		map k 2<C-y>2<Up>
-		"imap j <C-o>j
-		"imap k <C-o>k
-		"imap h <C-o>h
-		"imap l <C-o>l
-		map th :tabp<CR>
-		map tl :tabn<CR>
+        map d <C-d>
+        map u <C-u>
 		let s:imove = 1
 		echo "QuickMove On"
 	endif
@@ -146,7 +138,7 @@ endfunction
 "=========================
 "NERDTree
 map <F5> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\~$', '\.pkl$']
+let NERDTreeIgnore = ['\~$', '\.pkl$', '\.pyc$']
 filetype plugin on
 "TagBar
 map <F3> :TagbarToggle<CR>
@@ -165,25 +157,42 @@ command! EditVIMRC tabe ~/.vimrc
 "Session
 command! Ss mksession! ~/.vimsession
 command! Sl source ~/.vimsession
+
 command! Ss1 mksession! ~/.vimsession1
 command! Sl1 source ~/.vimsession1
+
 command! Ss2 mksession! ~/.vimsession2
 command! Sl2 source ~/.vimsession2
+
 command! Ss3 mksession! ~/.vimsession3
 command! Sl3 source ~/.vimsession3
+
+command! Ss4 mksession! ~/.vimsession4
+command! Sl4 source ~/.vimsession4
+
+command! Ss5 mksession! ~/.vimsession5
+command! Sl5 source ~/.vimsession5
+
+command! Ss6 mksession! ~/.vimsession6
+command! Sl6 source ~/.vimsession6
 
 "==============================
 "==============================
 "Quirky little things
 "==============================
 "==============================
+" swap escape with tab
+inoremap <Esc> <Tab>
+inoremap <Tab> <Esc>
+" noremap <Esc> <Tab>
+" noremap <Tab> <Esc>
 " quick-fix window
 noremap <C-Down> :cn<CR>
 noremap <C-Up> :cp<CR>
 " quick 3-word jumps
-nnoremap q 3w
-nnoremap Q 3b
-noremap [q q
+" nnoremap q 3w
+" nnoremap Q 3b
+" noremap [q q
 " start editing at end of file
 nnoremap gz Gzzo
 "cancel highlight
@@ -193,10 +202,15 @@ nnoremap <F7> :tags<CR>
 " switch buffer
 nnoremap <F8> :b#<CR>
 " tab-left and tab-right
-nnoremap H <C-PageUp>
-nnoremap L <C-PageDown>
+nnoremap H <C-PageUp> <C-L>
+nnoremap L <C-PageDown> <C-L>
 nnoremap gh H
+nnoremap gm M
 nnoremap gl L
+" more easily jump to beginning of line
+nnoremap ` ^
+nnoremap 0 $
+nnoremap $ `
 " wrap-line movement
 call SetGMove()
 nnoremap gT :tablast<CR>
@@ -208,7 +222,10 @@ nnoremap gT :tablast<CR>
 au BufRead,BufNewFile *.yaml set ft=none
 
 syntax on
-set et sw=4 sts=4
+set et
+set sw=4
+set sts=4
+set ts=4
 set tw=80
 set nu linebreak wrap!
 set smartindent

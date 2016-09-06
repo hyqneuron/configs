@@ -13,25 +13,22 @@ general {
         color_bad = '#ff0000'
 }
 
-order += "run_watch DHCP"
-order += "ethernet eth0"
-order += "wireless wlan1"
-order += "battery 1"
+order += "net_rate"
+# order += "ethernet enp2s0"
+order += "wireless enx18a6f71813fc" #wlxc46e1f235598
+# order += "wifi_info"
 order += "cpu_usage"
+order += "tmem_info"
 order += "volume master"
+order += "battery 1"
 order += "tztime local"
 
-run_watch DHCP {
-        pidfile = "/var/run/dhclient*.pid"
-        format = "  %title: %status  "
-}
-
-ethernet eth0 {
+ethernet enp2s0 {
         # if you use %speed, i3status requires root privileges
         format_up = "  Eth: %ip  "
         format_down = "  No eth  "
 }
-wireless wlan1 {
+wireless enx18a6f71813fc {
         format_up = "  %essid: %quality [%ip]  "
         format_down = "  No wifi  "
 }
@@ -45,7 +42,7 @@ battery 1 {
 }
 
 cpu_usage {
-        format = "  C %usage  "
+        format = "  CPU %usage  "
 }
 
 
