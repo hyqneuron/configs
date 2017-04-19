@@ -182,10 +182,6 @@ command! Sl6 source ~/.vimsession6
 "==============================
 "==============================
 " swap escape with tab
-inoremap <Esc> <Tab>
-inoremap <Tab> <Esc>
-" noremap <Esc> <Tab>
-" noremap <Tab> <Esc>
 " quick-fix window
 noremap <C-Down> :cn<CR>
 noremap <C-Up> :cp<CR>
@@ -226,9 +222,9 @@ set et
 set sw=4
 set sts=4
 set ts=4
-set tw=80
+set tw=120
 set nu linebreak wrap!
-set smartindent
+set cindent
 set hlsearch
 set clipboard="0"  "make pasting easier"
 set go-=T

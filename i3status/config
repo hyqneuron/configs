@@ -15,12 +15,12 @@ general {
 
 order += "net_rate"
 # order += "ethernet enp2s0"
-order += "wireless enx18a6f71813fc" #wlxc46e1f235598
+order += "wireless wlxc46e1f235598" #wlxf4f26d1a9400
+# order += "wireless wlxc46e1f235598"
 # order += "wifi_info"
 order += "cpu_usage"
 order += "tmem_info"
 order += "volume master"
-order += "battery 1"
 order += "tztime local"
 
 ethernet enp2s0 {
@@ -28,7 +28,7 @@ ethernet enp2s0 {
         format_up = "  Eth: %ip  "
         format_down = "  No eth  "
 }
-wireless enx18a6f71813fc {
+wireless wlxc46e1f235598{
         format_up = "  %essid: %quality [%ip]  "
         format_down = "  No wifi  "
 }
@@ -48,7 +48,7 @@ cpu_usage {
 
 volume master {
         format = "  V %volume  "
-        device = "default"
+        device = "pulse"
         mixer = "Master"
         mixer_idx = 0
 }

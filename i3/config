@@ -37,6 +37,7 @@ for_window [title="Figure .*"] floating enable
 # A-C-r:            reload i3
 # A-S-q:            quit with nagbar
 # A-S-C-q:          quit
+# A-S-C-l:          lock screen with i3lock
 # 
 # A-direction:      change focus
 # A-S-direction:    move window
@@ -80,11 +81,11 @@ bindsym $mod+slash scratchpad show
 
 
 # volume control
-bindsym Mod4+Shift+Up   exec amixer sset Master 7+
-bindsym Mod4+Shift+Down exec amixer sset Master 7-
+bindsym Mod4+Shift+Up   exec amixer -D pulse sset Master 7%+
+bindsym Mod4+Shift+Down exec amixer -D pulse sset Master 7%-
 bindsym XF86AudioMute   exec amixer -D pulse sset Master toggle 
-bindsym XF86AudioRaiseVolume exec amixer sset Master 7+
-bindsym XF86AudioLowerVolume exec amixer sset Master 7-
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 7%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 7%-
 
 # Windows-key app launching
 bindsym Mod4+Return exec i3-sensible-terminal  # i3-sensible-terminal is modified on per-system basis
@@ -110,6 +111,10 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+Control+q exit
+
+# lock screen
+bindsym $mod+Shift+Control+i exec "i3lock"
+exec xautolock -time 20 -locker 'i3lock'
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -232,6 +237,10 @@ bindsym $mod+comma  exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
 
 # move to output
 bindsym $mod+Shift+m exec i3-input -F 'move workspace to output %s' -P 'move workspace to output: '
+bindsym $mod+Shift+Control+h move workspace to output left
+bindsym $mod+Shift+Control+l move workspace to output right
+bindsym $mod+Shift+Control+j move workspace to output down
+bindsym $mod+Shift+Control+k move workspace to output up
 
 
 # colors
@@ -251,6 +260,7 @@ client.urgent           #2f343a #900000 #ffffff #ff00ff
 # Run commands
 #======================
 exec --no-startup-id feh --bg-fill ~/.config/backgrounds/Forever_crop1.jpg
+exec --no-startup-id setxkbmap -option caps:swapescape
 
 mode "chrome" {
     bindsym j       exec xdotool click --repeat 1 --delay 1 5
