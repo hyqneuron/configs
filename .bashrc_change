@@ -1,0 +1,29 @@
+# alias e_i3='vim ~/.config/i3/config'
+# alias e_i3status='vim ~/.config/i3status/config'
+# alias e_vim='vim ~/.vimrc'
+# alias e_grub='sudo vim /etc/default/grub'
+alias c='cd'
+alias d='cd'
+alias u='cd ..'
+alias l='ls -lh'
+alias a='ls -lah'
+alias g=grep
+alias n='nmcli'
+alias v='vim'
+alias py='python'
+alias ipy='ipython'
+alias gs='git status'
+alias gpl='git pull'
+alias gps='git push'
+alias cl='clear'
+
+# cuda environment
+# export PATH=~/.bin/:/usr/local/cuda/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+# huva python lib path
+# export PYTHONPATH=$PYTHONPATH:~/github/pylibhuva
+
+# enable autojump
+# . /usr/share/autojump/autojump.sh
+
