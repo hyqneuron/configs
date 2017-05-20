@@ -27,3 +27,13 @@ alias cl='clear'
 # enable autojump
 # . /usr/share/autojump/autojump.sh
 
+ct () {
+    if [[ $1 = "" ]]; then
+        echo "Please enter a target to jump to"
+    elif [[ $(varg $1) = '' ]]; then
+        echo "$1 is not supported by varg."
+    else
+        cd $(varg $1)
+    fi
+}
+

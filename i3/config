@@ -88,7 +88,8 @@ bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 7%+
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 7%-
 
 # Windows-key app launching
-bindsym Mod4+Return exec i3-sensible-terminal  # i3-sensible-terminal is modified on per-system basis
+bindsym Mod4+Return exec i3-sensible-terminal   # i3-sensible-terminal is modified on per-system basis
+bindsym Mod4+t      exec gnome-terminal         # for gnome-terminal specifically
 bindsym Mod4+g      exec gvim
 bindsym Mod4+c      exec x-www-browser
 bindsym Mod4+r      exec grun
